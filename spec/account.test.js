@@ -1,13 +1,11 @@
 const Account = require('../lib/account');
 const Transaction = require('../lib/transaction');
 
-jest.mock('../lib/transaction');
-
 describe('Account', () => {
   let account;
 
   beforeEach(() => {
-    account = new Account();
+    account = new Account({ Transaction });
   });
 
   it('is defined', () => {
@@ -15,10 +13,11 @@ describe('Account', () => {
   });
 
   it('can make a deposit', () => {
-    const addTransaction = jest.fn();
+    let spy = jest.spyOn(Transaction, 'addTransaction');
+
     account.deposit(50);
 
-    expect(addTransaction).toHaveBeenCalledTimes(1);
-    expect(addTransaction).toHaveBeenCalledWith(50);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(50);
   });
 });
