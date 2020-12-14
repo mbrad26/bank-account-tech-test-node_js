@@ -7,7 +7,9 @@ describe('Account', () => {
   const error = 'Please make sure the amount is a positive number!';
 
   beforeEach(() => {
-    account = new Account({ Transaction });
+    account = new Account();
+
+    jest.clearAllMocks();
   });
 
   it('is defined', () => {
@@ -33,7 +35,7 @@ describe('Account', () => {
   });
 
   it('prints a statement', () => {
-    let spy = jest.spyOn(Printer, 'printStatement');
+    let spy = jest.spyOn(Printer.prototype, 'printStatement');
 
     account.statement();
 
