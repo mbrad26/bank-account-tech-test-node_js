@@ -13,11 +13,20 @@ describe('Account', () => {
   });
 
   it('can make a deposit', () => {
-    let spy = jest.spyOn(Transaction, 'addTransaction');
+    let spy = jest.spyOn(Transaction, 'addDepositTransaction');
 
     account.deposit(50);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(50);
+  });
+
+  it('can make a withdrawal', () => {
+    let spy = jest.spyOn(Transaction, 'addWithdrawTransaction');
+
+    account.withdraw(25);
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(25);
   });
 });
