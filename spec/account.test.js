@@ -1,5 +1,6 @@
 const Account = require('../lib/account');
 const Transaction = require('../lib/transaction');
+const Printer = require('../lib/printer');
 
 describe('Account', () => {
   let account;
@@ -29,6 +30,14 @@ describe('Account', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(25);
+  });
+
+  it('prints a statement', () => {
+    let spy = jest.spyOn(Printer, 'printStatement');
+
+    account.statement();
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   describe('deposit', () => {
