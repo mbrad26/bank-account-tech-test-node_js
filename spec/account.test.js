@@ -3,6 +3,7 @@ const Transaction = require('../lib/transaction');
 
 describe('Account', () => {
   let account;
+  const error = 'Please make sure the amount is a positive number!';
 
   beforeEach(() => {
     account = new Account({ Transaction });
@@ -32,16 +33,12 @@ describe('Account', () => {
 
   describe('deposit', () => {
     it('raises an error if amount is < 0', () => {
-      const error = 'Please make sure the amount is a positive number!';
-
       expect(() => account.deposit(-25)).toThrow(error);
     });
   });
 
   describe('withdraw', () => {
     it('raises an error if amount is < 0', () => {
-      const error = 'Please make sure the amount is a positive number!';
-
       expect(() => account.withdraw(-25)).toThrow(error);
     });
   });
