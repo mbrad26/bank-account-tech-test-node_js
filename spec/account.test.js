@@ -29,4 +29,12 @@ describe('Account', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(25);
   });
+
+  describe('deposit', () => {
+    it('raises an error if amount is < 0', () => {
+      const error = 'Please make sure the amount is a positive number!'
+
+      expect(() => account.deposit(-25)).toThrow(error);
+    });
+  });
 });
