@@ -11,11 +11,21 @@ describe('Transaction', () => {
 
   describe('addDepositTransaction', () => {
     it('registers a deposit transaction', () => {
-      const transaction = new Transaction(50, null);
+      const transaction = { date: Date.now(), credit: 50, debit: null };
 
       expect(Transaction.transactions).toEqual([]);
 
       Transaction.addDepositTransaction(50);
+
+      expect(Transaction.transactions).toContainEqual(transaction);
+    });
+  });
+
+  describe('addWithdrawTransaction', () => {
+    it('registers a withdrawal transaction', () => {
+      const transaction = { date: Date.now(), credit: null, debit: 25 };
+
+      Transaction.addWithdrawTransaction(25);
 
       expect(Transaction.transactions).toContainEqual(transaction);
     });
