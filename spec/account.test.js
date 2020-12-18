@@ -53,4 +53,13 @@ describe('Account', () => {
       expect(() => account.withdraw(-25)).toThrow(error);
     });
   });
+
+  describe('updateBalance', () => {
+    it('updates account balance', () => {
+      account.deposit(50);
+      account.withdraw(20);
+
+      expect(account.balance).toEqual(30);
+    });
+  });
 });

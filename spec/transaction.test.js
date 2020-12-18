@@ -26,7 +26,7 @@ describe('Transaction', () => {
   });
 
   describe('addWithdrawTransaction', () => {
-    it('registers a withdraw transaction', () => {
+    it('registers a withdrawal transaction', () => {
       const transaction = { date: Date.now(), credit: null, debit: 25 };
 
       Transaction.addWithdrawTransaction(25);
