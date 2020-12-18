@@ -53,6 +53,13 @@ describe('Account', () => {
     it('raises an error if amount is < 0', () => {
       expect(() => account.withdraw(-25)).toThrow(error);
     });
+
+    it('raises an error if amount < balance', () => {
+
+      account.deposit(50);
+
+      expect(() => account.withdraw(55)).toThrow('Insufficient funds!');
+    });
   });
 
   describe('updateBalance', () => {
