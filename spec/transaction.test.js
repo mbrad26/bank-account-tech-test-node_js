@@ -5,6 +5,10 @@ describe('Transaction', () => {
     Date.now = jest.fn(() => 1608204215428);
   });
 
+  afterEach(() => {
+    Transaction.transactions = [];
+  });
+
   it('is defined', () => {
     expect(Transaction).toBeDefined();
   });
@@ -17,12 +21,12 @@ describe('Transaction', () => {
 
       Transaction.addDepositTransaction(50);
 
-      expect(Transaction.transactions).toContainEqual(transaction);
+      expect(Transaction.getTransactions).toContainEqual(transaction);
     });
   });
 
   describe('addWithdrawTransaction', () => {
-    it('registers a withdrawal transaction', () => {
+    it('registers a withdraw transaction', () => {
       const transaction = { date: Date.now(), credit: null, debit: 25 };
 
       Transaction.addWithdrawTransaction(25);
