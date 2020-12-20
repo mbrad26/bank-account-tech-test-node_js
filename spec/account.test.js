@@ -41,6 +41,7 @@ describe('Account', () => {
     account.statement();
 
     expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(Transaction.getTransactions);
   });
 
   describe('deposit', () => {
